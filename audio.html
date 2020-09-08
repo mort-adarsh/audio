@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta author= "Adarsh Srivatsv">
+	<title>Myplayer</title>
+<style type="text/css">
+	body
+	{
+		text-align: center;
+		font-size: 24px;
+		font-weight: 600;
+		margin-top: 60px;
+		background-color: #fffaf0;
+	}
+	button
+	{
+		font-size: 16px;
+		margin: 4px;
+		padding: 6px;
+		font-weight: 900;
+		color: black;
+		border-radius: 5px;
+		transition: background-color;
+
+	}
+	button:hover
+	{
+		background-color: #ffcccb;
+	}
+</style>
+</head>
+<body>
+
+<h1>My Audio Play</h1>
+
+<p>Here we go:</p>
+
+<audio controls id="myAudio">
+  <source src="smooth.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<p>Click the buttons to bookmark/play bookmaark or del the bookmark.</p>
+<p id="id1"></p>
+
+<button onclick="bookmark()" type="button">Bookmark Audio</button>
+<button onclick="playbookmark()" type="button">Play Bookmark</button> 
+<button onclick="delbookmark()" type="button">Del Bookmark</button>
+
+
+
+
+<script>
+var x = document.getElementById("myAudio"); 
+
+function bookmark() { 
+  var y = x.currentTime;
+  x.pause(); 
+  localStorage.setItem('pl', y);
+  document.getElementById("id1").innerHTML = "<strong style=\"color:green;\">Bookmarked</strong>";
+
+} 
+
+function playbookmark() { 
+  	if(localStorage.getItem('pl'))
+	{
+		  x.currentTime = localStorage.getItem('pl'); 
+          x.play();
+          document.getElementById("id1").innerHTML = "";
+	}
+    else
+    { 
+      document.getElementById("id1").innerHTML = "<strong style=\"color:red;\">No Bookmark Found</strong>";
+    }
+} 
+
+function delbookmark() { 
+	if(localStorage.getItem('pl'))
+	{
+		localStorage.removeItem('pl');
+		document.getElementById("id1").innerHTML = "<strong style=\"color:purple;\">Bookmark Deleted</strong>";
+	}
+    else
+    { 
+      document.getElementById("id1").innerHTML = "<strong style=\"color:blue;\">No Bookmark Found</strong>";
+    }
+  
+} 
+</script>
+
+</body>
+</body>
+</html>
