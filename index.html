@@ -40,6 +40,13 @@
   <source src="smooth.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
+<p>Click the buttons to play/ pause or download the audio.</p>
+<p id="id"></p>
+
+<button onclick="play()" type="button">Play</button>
+<button onclick="pause()" type="button">Pause</button> 
+<a  href="smooth.mp3"><button download type="button">Download</button></a>
+
 <p>Click the buttons to bookmark/play bookmaark or del the bookmark.</p>
 <p id="id1"></p>
 
@@ -52,7 +59,14 @@
 
 <script>
 var x = document.getElementById("myAudio"); 
-
+function play()
+{
+x.play();
+}
+function pause()
+{
+	x.pause();
+}
 function bookmark() { 
   var y = x.currentTime;
   x.pause(); 
